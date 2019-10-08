@@ -2,10 +2,10 @@ static const int SceneTextureId = 14;
 float2 UV = GetDefaultSceneTextureUV(Parameters, SceneTextureId);
 float3 Sum = float3(0, 0, 0);
 
-float2 Dis = float2(CenterX, CenterY) - GetViewportUV(Parameters);
+float2 Dir = float2(CenterX, CenterY) - GetViewportUV(Parameters);
 for (int it = 0; it < SampleNum; it++)
 {
-	float2 UVOffset = it * Offset * length(Dis) * Dis;
+	float2 UVOffset = it * Offset * length(Dir) * Dir;
 	
 	#if SHADING_PATH_MOBILE
 	Sum += MobileSceneTextureLookup(Parameters, SceneTextureId, UV + UVOffset).rgb;
